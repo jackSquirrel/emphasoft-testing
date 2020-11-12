@@ -1,0 +1,9 @@
+@import url(./__logo/header__logo.css);
+
+.header {
+    width: 100%;
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
