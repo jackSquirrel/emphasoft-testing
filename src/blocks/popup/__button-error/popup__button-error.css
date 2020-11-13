@@ -1,0 +1,9 @@
+.popup__button-error {
+    display: block;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 4px auto 0;
+    color: #ff0000;
+    height: 14px;
+    text-align: center;
+}
