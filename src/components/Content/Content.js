@@ -7,9 +7,6 @@ class Content extends React.Component {
         this._renderUsers = this._renderUsers.bind(this);
         this._showError = this._showError.bind(this);
         this._getUsers = props.getUsers;
-        this.state = {
-            usersAreShown: false
-        }
     }
 
     _renderUsers() {
@@ -39,15 +36,15 @@ class Content extends React.Component {
         return (
             <div className="users">
                 <button type="button" className="users__button" onClick={ this.props.isLoggedIn ? this._renderUsers : this._showError }>Список пользователей</button>
-                { this.state.usersAreShown ? 
-                    <div>
+                { this.props.usersAreShown ? 
+                    <div className="users__search-field">
                         <input className="users__search" placeholder="Поиск пользователя" ref={(input) => { this._userInput = input }}></input>
                         <button className="users__search-button" onClick={this._findUser.bind(this)}>Искать</button>
                     </div>
                     : null }
                 <ul className="users__list">
                     {this.props.users.map((user) => 
-                        <li key={user.id} className="users__item">id {user.id} {user.name} {user.username}</li>
+                        <li key={user.id} className="users__item">id: {user.id}<br />Username: {user.username}<br />Name: {user.name}</li>
                     )}
                 </ul>
             </div>
@@ -58,7 +55,8 @@ class Content extends React.Component {
 export default connect(
     state => ({
         isLoggedIn: state.isLoggedIn,
-        users: state.users.filter(user => user.username.includes(state.filterUsers))
+        users: state.users.usersList.filter(user => user.username.includes(state.filterUsers)),
+        usersAreShown: state.users.usersAreShown
     }),
     dispatch => ({
         onShowCkick: (props) => {

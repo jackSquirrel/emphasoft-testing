@@ -25,10 +25,11 @@ export default connect(
     }),
     dispatch => ({
         onOpenClick: () => {
-            dispatch({ type: 'OPEN_SIGNIN_POPUP' })
+            dispatch({ type: 'OPEN_SIGNIN_POPUP' });
         },
         onQuiteClick: () => {
-            dispatch({ type: 'QUITE' })
+            dispatch({ type: 'CLEAR_USERLIST' });
+            dispatch({ type: 'QUITE' });
         }
     })
 )(Header);
