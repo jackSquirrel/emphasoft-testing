@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header />
-        <Content />
+        <Content getUsers={() => api.getUsers()} />
         { this.props.isPopupOpen ? <Popup 
           signInCallback={(user, password) => api.signIn(user, password)}
           /> : null }

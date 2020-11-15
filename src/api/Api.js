@@ -4,7 +4,6 @@ export default class Api {
     }
 
     signIn(username, password) {
-        console.log(this._link);
         return fetch(`${this._link}/api-token-auth/`, {
             method: 'POST',
             headers: {
@@ -24,6 +23,26 @@ export default class Api {
         })
         .catch((err) => {
             console.log('Ошибка: ' + err.status);
+            return err.json();
+        })
+    }
+
+    getUsers() {
+        console.log(localStorage.getItem('token'));
+        return fetch(`${this._link}/api/v1/users/`, {
+            method: 'GET',
+            headers: {
+                authorization: `Token ${localStorage.getItem('token')}`
+            }
+        })
+        .then((res => {
+            if(res.ok) {
+                return res.json();
+            }
+            return Promise.reject(res);
+        }))
+        .catch((err) => {
+            console.log('Ошибка' + err.status);
             return err.json();
         })
     }

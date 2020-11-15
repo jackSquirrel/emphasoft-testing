@@ -19,7 +19,7 @@ class PopupSignIn extends React.Component {
                 if(res.non_field_errors) {
                     this._buttonError.textContent = 'Неправильный пароль или имя пользователя'
                 } else if(res.token) {
-                    console.log()
+                    localStorage.setItem('token', res.token)
                     this.props.onEntering();
                     this.props.onLoggingIn();
                 }
