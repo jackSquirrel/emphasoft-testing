@@ -12,8 +12,15 @@ class App extends React.Component {
     });
   }
 
+  _checkLogging() {
+    if (localStorage.getItem('token') != null) {
+      this.props.toLogIn();
+    }
+  }
+
   render() {
     const api = this._getApi();
+    this._checkLogging();
     return (
       <div className="app">
         <Header />
@@ -28,9 +35,11 @@ class App extends React.Component {
 
 export default connect(
   state => ({
-    isPopupOpen: (state.isPopupOpen.popupSignIn || state.isPopupOpen.popupLoggedIn)
+    isPopupOpen: (state.isPopupOpen.popupSignIn || state.isPopupOpen.popupLoggedIn || state.isPopupOpen.popupError),
   }),
   dispatch => ({
-    
+    toLogIn: () => {
+      dispatch({ type: 'ENTERED' })
+    }
   })
 )(App);

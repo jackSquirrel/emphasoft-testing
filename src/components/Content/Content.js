@@ -19,13 +19,13 @@ class Content extends React.Component {
             .then((data) => {
                 this.setState({ usersAreShown: true });
                 data.forEach((user) => {
-                    this.props.onShowCkick(user);
+                    this.props.onShowClick(user);
                 })
             })
     }
 
     _showError() {
-        alert('Необходимо авторизироваться!');
+        this.props.onErrorClick();
     }
 
     _findUser() {
@@ -59,7 +59,7 @@ export default connect(
         usersAreShown: state.users.usersAreShown
     }),
     dispatch => ({
-        onShowCkick: (props) => {
+        onShowClick: (props) => {
             const payload = {
                 id: props.id,
                 name: `${props.first_name} ${props.last_name}`,
@@ -69,6 +69,9 @@ export default connect(
         },
         onFindUser: (name) => {
             dispatch({ type: 'FIND_USER', payload: name })
+        },
+        onErrorClick: () => {
+            dispatch({ type: 'OPEN_ERROR_POPUP' })
         }
     })
 )(Content);

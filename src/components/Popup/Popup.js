@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PopupSignIn from './PopupSignIn';
 import PopupLoggedIn from './PopupLoggedIn';
+import PopupError from './PopupError';
 
 class Popup extends React.Component {
     constructor(props){
@@ -16,7 +17,11 @@ class Popup extends React.Component {
     render() {
         return (
             <div className="popup">
-                {this.props.isSignInPopupOpen ? <PopupSignIn signInCallback={ this.signInCallback }/> : <PopupLoggedIn /> }
+                {this.props.isSignInPopupOpen ? 
+                <PopupSignIn signInCallback={ this.signInCallback }/> : 
+                (this.props.isLoggedInPopupOpen ? <PopupLoggedIn /> : 
+                <PopupError />)
+                }
             </div>
         )
     }
