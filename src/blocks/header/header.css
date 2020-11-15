@@ -1,9 +1,12 @@
 @import url(./__logo/header__logo.css);
+@import url(./__button/header__button.css);
 
 .header {
     width: 100%;
-    background-color: bisque;
+    height: 60px;
+    background-color: #b2d2d6;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
