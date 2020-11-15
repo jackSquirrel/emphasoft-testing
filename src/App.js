@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from './components/Header/Header';
 import Popup from './components/Popup/Popup';
 import Api from './api/Api';
+import Content from './components/Content/Content';
 
 class App extends React.Component {
   _getApi() {
@@ -16,7 +17,10 @@ class App extends React.Component {
     return (
       <div className="app">
         <Header />
-        <Popup signInCallback={(user, password) => {return api.signIn(user, password)}}/>
+        <Content />
+        { this.props.isPopupOpen ? <Popup 
+          signInCallback={(user, password) => api.signIn(user, password)}
+          /> : null }
       </div>
     );
   }
@@ -24,7 +28,7 @@ class App extends React.Component {
 
 export default connect(
   state => ({
-    testStore: state
+    isPopupOpen: (state.isPopupOpen.popupSignIn || state.isPopupOpen.popupLoggedIn)
   }),
   dispatch => ({
     

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import HeaderButton from './HeaderButton';
 
 class Header extends React.Component {
     openPopup() {
@@ -8,11 +9,11 @@ class Header extends React.Component {
     }
     
     render() {
-        console.log(this.props.state);
        return(
         <header className="header">
             <p className="header__logo">EmphaSoft</p>
-            <button onClick={this.openPopup.bind(this)} className="header__auth">Авторизоваться</button>
+            { this.props.isLoggedIn ? <HeaderButton callback={this.props.onQuiteClick} name='Выйти' />
+                : <HeaderButton callback={this.props.onOpenClick} name='Авторизироваться'/> }
         </header> 
        )
     }
@@ -20,11 +21,14 @@ class Header extends React.Component {
 
 export default connect(
     state => ({
-        state
+        isLoggedIn: state.isLoggedIn
     }),
     dispatch => ({
         onOpenClick: () => {
-            dispatch({ type: 'OPEN_POPUP' })
+            dispatch({ type: 'OPEN_SIGNIN_POPUP' })
+        },
+        onQuiteClick: () => {
+            dispatch({ type: 'QUITE' })
         }
     })
 )(Header);
