@@ -1,4 +1,11 @@
 .users__list {
     width: 500px;
     margin: 0 auto 50px;
+    padding: 0;
 }
+
+@media screen and (max-width: 550px) {
+    .users__list {
+        width: 100%;
+    }
+  }

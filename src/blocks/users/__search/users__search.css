@@ -7,4 +7,12 @@
     border-radius: 10px;
     background-color: #fff;
     border: none;
+    box-sizing: border-box;
 }
+
+@media screen and (max-width: 550px) {
+    .users__search {
+      width: 300px;
+      margin: 20px auto 5px;
+    }
+  }

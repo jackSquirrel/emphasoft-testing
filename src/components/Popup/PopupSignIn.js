@@ -35,6 +35,7 @@ class PopupSignIn extends React.Component {
        this.setState((state)=>{return {...state, isFormValid: state.isPasswordValid && state.isUsernameValid}})
     }
 
+    // Авторизация пользователя
     _signIn(event) {
         event.preventDefault();
         this._signInCallback(this._username.value, this._password.value)

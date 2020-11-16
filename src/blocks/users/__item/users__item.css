@@ -3,4 +3,5 @@
     list-style: none;
     line-height: 25px;
     text-align: center;
+    word-wrap: break-word;
 }

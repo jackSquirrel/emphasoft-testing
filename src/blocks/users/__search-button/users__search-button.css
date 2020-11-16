@@ -10,3 +10,10 @@
     background: linear-gradient(90deg, #029EC7 0%, #12D2D4 100%);
     color: #fff;
 }
+
+@media screen and (max-width: 550px) {
+    .users__search-button {
+      position: static;
+      width: 150px;
+    }
+  }
