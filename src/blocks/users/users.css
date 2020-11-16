@@ -1,0 +1,13 @@
+@import url(./__button/users__button.css);
+@import url(./__search/users__search.css);
+@import url(./__item/users__item.css);
+@import url(./__list/users__list.css);
+@import url(./__search-field/users__search-field.css);
+@import url(./__search-button/users__search-button.css);
+
+.users {
+    width: 100%;
+    background-color: #e4f1f2;
+    display: flex;
+    flex-direction: column;
+}

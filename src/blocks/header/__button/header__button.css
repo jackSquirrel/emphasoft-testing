@@ -1,0 +1,7 @@
+.header__button {
+    border: none;
+    background: none;
+    max-height: 39px;
+    cursor: pointer;
+    margin-right: 20px;
+}
