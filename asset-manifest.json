@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/emphasoft-testing/static/css/main.282daeb8.chunk.css",
-    "main.js": "/emphasoft-testing/static/js/main.b07077f4.chunk.js",
-    "main.js.map": "/emphasoft-testing/static/js/main.b07077f4.chunk.js.map",
+    "main.js": "/emphasoft-testing/static/js/main.0f39a6b2.chunk.js",
+    "main.js.map": "/emphasoft-testing/static/js/main.0f39a6b2.chunk.js.map",
     "runtime-main.js": "/emphasoft-testing/static/js/runtime-main.c34b1174.js",
     "runtime-main.js.map": "/emphasoft-testing/static/js/runtime-main.c34b1174.js.map",
     "static/js/2.006e5bd7.chunk.js": "/emphasoft-testing/static/js/2.006e5bd7.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.c34b1174.js",
     "static/js/2.006e5bd7.chunk.js",
     "static/css/main.282daeb8.chunk.css",
-    "static/js/main.b07077f4.chunk.js"
+    "static/js/main.0f39a6b2.chunk.js"
   ]
 }
