@@ -18,7 +18,7 @@ class Header extends React.Component {
     render() {
        return(
         <header className="header">
-            <img src="/images/logo.png" className="header__logo" alt="logo" />
+            <img src="images/logo.png" className="header__logo" alt="logo" />
             { this.props.isLoggedIn ? <HeaderButton callback={this._quite.bind(this)} name='Выйти' />
                 : <HeaderButton callback={this._openPopup.bind(this)} name='Авторизироваться'/> }
         </header> 

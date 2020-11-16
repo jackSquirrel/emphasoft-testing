@@ -9,7 +9,7 @@ class PopupClose extends React.Component {
     render() {
         return (
             <img 
-                src="/images/close.svg" 
+                src="images/close.svg" 
                 alt="X" 
                 className="popup__close"
                 onClick={this._closePopup.bind(this)} 
