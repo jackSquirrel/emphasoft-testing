@@ -10,7 +10,7 @@ class App extends React.Component {
   // Создание экземпляра класса Api для взаимодействия с сервером
   _getApi() {
     return new Api({
-      baseUrl: 'http://emphasoft-test-assignment.herokuapp.com'
+      baseUrl: 'https://emphasoft-test-assignment.herokuapp.com'
     });
   }
 
