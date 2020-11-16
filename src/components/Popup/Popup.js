@@ -10,10 +10,7 @@ class Popup extends React.Component {
         this.signInCallback = props.signInCallback;
     }
 
-    closePopup() {
-        this.props.onCloseClick();
-    }
-
+    // Отрисовка попапа в зависимости от того, какой открыл пользователь
     render() {
         return (
             <div className="popup">
@@ -32,9 +29,5 @@ export default connect (
         isSignInPopupOpen: state.isPopupOpen.popupSignIn,
         isLoggedInPopupOpen: state.isPopupOpen.popupLoggedIn
     }),
-    dispatch => ({
-        onCloseClick: () => {
-            dispatch({ type: 'CLOSE_POPUP' })
-        }
-    })
+    dispatch => ({})
 )(Popup);

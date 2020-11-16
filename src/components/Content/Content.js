@@ -1,41 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ContentButton from './ContentButton';
 
 class Content extends React.Component {
     constructor(props){
         super(props);
-        this._renderUsers = this._renderUsers.bind(this);
-        this._showError = this._showError.bind(this);
-        this._getUsers = props.getUsers;
+        this.getUsers = props.getUsers;
     }
 
-    _renderUsers() {
-        document.querySelector('.users__list').innerHTML = '';
-        this._getUsers()
-            .then((data) => {
-                data.sort((a, b) => a.id > b.id ? 1 : -1);
-                return data;
-            })
-            .then((data) => {
-                this.setState({ usersAreShown: true });
-                data.forEach((user) => {
-                    this.props.onShowClick(user);
-                })
-            })
-    }
-
-    _showError() {
-        this.props.onErrorClick();
-    }
-
+    // Фильтрация списка пользователей по введеному слову
     _findUser() {
         this.props.onFindUser(this._userInput.value);
     }
 
+    // Отрисовка кнопки и списка пользователей с полем для поиска
+    // Список и поле поиска отрисовываются только при нажатии кнопки
     render() {
         return (
             <div className="users">
-                <button type="button" className="users__button" onClick={ this.props.isLoggedIn ? this._renderUsers : this._showError }>Список пользователей</button>
+                <ContentButton getUsers={() => this.getUsers()} />
                 { this.props.usersAreShown ? 
                     <div className="users__search-field">
                         <input className="users__search" placeholder="Поиск пользователя" ref={(input) => { this._userInput = input }}></input>
@@ -54,24 +37,12 @@ class Content extends React.Component {
 
 export default connect(
     state => ({
-        isLoggedIn: state.isLoggedIn,
         users: state.users.usersList.filter(user => user.username.includes(state.filterUsers)),
         usersAreShown: state.users.usersAreShown
     }),
     dispatch => ({
-        onShowClick: (props) => {
-            const payload = {
-                id: props.id,
-                name: `${props.first_name} ${props.last_name}`,
-                username: props.username
-            }
-            dispatch({ type: 'ADD_USER', payload })
-        },
         onFindUser: (name) => {
             dispatch({ type: 'FIND_USER', payload: name })
-        },
-        onErrorClick: () => {
-            dispatch({ type: 'OPEN_ERROR_POPUP' })
         }
     })
 )(Content);

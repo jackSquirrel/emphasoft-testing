@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PopupClose from './PopupClose';
 
 class PopupSignIn extends React.Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class PopupSignIn extends React.Component {
     }
 
     _validation(event) {
-       console.log(event.target.name);
        if(event.target.name === 'name') {
             if(this._username.value.length === 0) {
                 this._usernameError.textContent = 'Это обязательное поле';
@@ -52,7 +52,7 @@ class PopupSignIn extends React.Component {
     render() {
         return (
             <div className="popup__content">
-                <img src="/images/close.svg" alt="X" onClick={this.props.onCloseClick} className="popup__close" />
+                <PopupClose />
                 <h3 className="popup__title">Авторизироваться</h3>
                 <form className="popup__form" name="new">
                     <input type="text" name="name" className="popup__input" placeholder="Имя пользователя" ref={(input) => {this._username = input}} onChange={this._validation} />
@@ -70,9 +70,6 @@ class PopupSignIn extends React.Component {
 export default connect(
     state => ({}),
     dispatch => ({
-        onCloseClick: () => {
-            dispatch({ type: 'CLOSE_POPUP' })
-        },
         onLoggingIn: () => {
             dispatch({ type: 'OPEN_LOGGEDIN_POPUP' })
         },

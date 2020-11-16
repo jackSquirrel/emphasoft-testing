@@ -3,17 +3,24 @@ import { connect } from 'react-redux';
 import HeaderButton from './HeaderButton';
 
 class Header extends React.Component {
-    openPopup() {
-        console.log('popup opening')
+
+    // Выход из аккаунта
+    _quite() {
+        this.props.onQuiteClick();
+    }
+
+    // Открытие попапа для авторизации
+    _openPopup() {
         this.props.onOpenClick();
     }
-    
+
+    // Отрисовка header'а
     render() {
        return(
         <header className="header">
             <img src="/images/logo.png" className="header__logo" alt="logo" />
-            { this.props.isLoggedIn ? <HeaderButton callback={this.props.onQuiteClick} name='Выйти' />
-                : <HeaderButton callback={this.props.onOpenClick} name='Авторизироваться'/> }
+            { this.props.isLoggedIn ? <HeaderButton callback={this._quite.bind(this)} name='Выйти' />
+                : <HeaderButton callback={this._openPopup.bind(this)} name='Авторизироваться'/> }
         </header> 
        )
     }
